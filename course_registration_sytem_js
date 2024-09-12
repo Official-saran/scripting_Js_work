@@ -1,0 +1,100 @@
+document.addEventListener("DOMContentLoaded", function() {
+    const registrationForm = document.getElementById("registrationForm");
+    
+    registrationForm.addEventListener("submit", function(event) {
+        // Prevent form submission
+        event.preventDefault();
+        
+        // Get form values
+        const courseCode = document.getElementById("courseCode").value.trim();
+        const studentId = document.getElementById("studentId").value.trim();
+        const prerequisitesMet = document.getElementById("prerequisitesMet").checked;
+        
+        // Validate fields
+        if (courseCode === "" || studentId === "") {
+            alert("Course Code and Student ID are required.");
+            return;
+        }
+        
+        // Validate prerequisites
+        if (!prerequisitesMet) {
+            alert("You do not meet the prerequisites for this course.");
+            return;
+        }
+        
+        // Check course availability via API call (Assuming a function checkAvailability exists)
+        checkAvailability(courseCode).then(isAvailable => {
+            if (!isAvailable) {
+                alert("The course is fully booked.");
+            } else {
+                // Submit the form (or make an API call to register the course)
+                alert("Registration successful!");
+                registrationForm.submit();
+            }
+        }).catch(error => {
+            console.error("Error checking course availability:", error);
+            alert("An error occurred while checking course availability.");
+        });
+    });
+});
+
+// Sample function to check course availability (replace with real API call)
+async function checkAvailability(courseCode) {
+    // Mock API call - replace with actual backend call
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            // Simulate course availability
+            resolve(Math.random() > 0.5); // Randomly return true or false
+        }, 1000);
+    });
+}
+document.addEventListener("DOMContentLoaded", function() {
+    const registrationForm = document.getElementById("registrationForm");
+    
+    registrationForm.addEventListener("submit", function(event) {
+        // Prevent form submission
+        event.preventDefault();
+        
+        // Get form values
+        const courseCode = document.getElementById("courseCode").value.trim();
+        const studentId = document.getElementById("studentId").value.trim();
+        const prerequisitesMet = document.getElementById("prerequisitesMet").checked;
+        
+        // Validate fields
+        if (courseCode === "" || studentId === "") {
+            alert("Course Code and Student ID are required.");
+            return;
+        }
+        
+        // Validate prerequisites
+        if (!prerequisitesMet) {
+            alert("You do not meet the prerequisites for this course.");
+            return;
+        }
+        
+        // Check course availability via API call (Assuming a function checkAvailability exists)
+        checkAvailability(courseCode).then(isAvailable => {
+            if (!isAvailable) {
+                alert("The course is fully booked.");
+            } else {
+                // Submit the form (or make an API call to register the course)
+                alert("Registration successful!");
+                registrationForm.submit();
+            }
+        }).catch(error => {
+            console.error("Error checking course availability:", error);
+            alert("An error occurred while checking course availability.");
+        });
+    });
+});
+
+// Sample function to check course availability (replace with real API call)
+async function checkAvailability(courseCode) {
+    // Mock API call - replace with actual backend call
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            // Simulate course availability
+            resolve(Math.random() > 0.5); // Randomly return true or false
+        }, 1000);
+    });
+}
